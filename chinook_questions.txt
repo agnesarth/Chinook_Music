@@ -1,0 +1,35 @@
+Chinook questions :
+
+1. album = Album.all
+album.count => 347
+2. track = Track.find_by(title:"White Room")
+track.artist => Eric Clapton
+3. time = Track.find_by(duration:"188133")
+time.title => Perfect
+4. album = Album.find_by(title:"Use Your Illusion II")
+album.artist => Guns N Roses
+5. album = Album.where("title like?", "%Great%")
+album.count => 13
+6. music = Album.where("title like?", "%music%")
+music.destroy_all => 4 supprimés
+7. album = Album.find_by(artist:"AC/DC")
+=> 1
+8. track = Track.find_by(duration:158589)
+=> nil
+9. Track.where(artist:"AC/DC").each do |x|
+puts x.title
+end
+10. album = Track.where(album:"Let There Be Rock").each do |x|
+puts x.title
+end
+11. prix album :
+track = Track.where(album:"Let There Be Rock").sum(:price)
+=> 7.920000000000001 
+durée album :
+track = Track.where(album:"Let There Be Rock").sum(:duration)
+=> 2453259 
+12. track = Track.where(artist:"Deep Purple").sum(:price)
+90.0899999999999
+13. track = Track.where(artist:"Eric Clapton").each do |x|
+x.artist = "Britney Spears"
+end
